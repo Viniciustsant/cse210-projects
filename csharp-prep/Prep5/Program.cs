@@ -6,7 +6,12 @@ class Program
     static void Main(string[] args)
     {
         DisplayWelcome();
-        PromptUserName();
+        string userName = PromptUserName();
+        int userNumber = PromptUserNumber();
+
+        int square = SquareNumber(userNumber);
+        
+        DisplayResult (userName, square);
     }
 
     static void DisplayWelcome()

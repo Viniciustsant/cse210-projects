@@ -2,7 +2,34 @@ using System;
 
 public class Scripture
 {
-    private string scripture = "Cremos na coligação literal de Israel e na restauração das Dez Tribos; que Sião (a Nova Jerusalém) será construída no continente americano; que Cristo reinará pessoalmente na Terra; e que a Terra será renovada e receberá a sua glória paradisíaca.";
+    private Reference _reference;
 
+    private List<Words> _words;
+
+    public Scripture(Reference reference, string text)
+    {
+        _reference = reference;
+        _words = text.Split(' ').Select(word=> new Words(word)).ToList();
+    }
+
+    public void HideRandomWords(int numberToHide)
+    {
+        Random random = new Random();
+        var wordsToHide = _words.Where(word => !word.IsHidden()).OrderBy(x => random.Next()).Take(numberToHide);
+        foreach (var word in wordsToHide)
+        {
+            word.Hide();
+        }
+    }
+
+    public string GetDisplayText()
+    {
+        return string.Join(" ", _words.Select(word => word.GetDisplayText()));
+    }
+
+    public bool IsCompletelyHidden()
+    {
+        return _words.All(word => word.IsHidden());
+    }
 
 }

@@ -1,5 +1,7 @@
 using System;
-
+/*For exceeding requirements i added 3 scriptures in a list to be the default scriptures and created a menu so the user 
+can choose one of the defaults or he can also add his own scripture, and use it to memorize, the code will record this scripture
+and shows it in the screen*/
 class Program
 {
     static void Main(string[] args)
